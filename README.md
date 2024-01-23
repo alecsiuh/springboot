@@ -153,53 +153,6 @@ docker container start music_db_image
 
 </p>
 
-<h4>Week 2 - Client</h4>
-
-- [x] the Client project has npm, webpack and ESLint implemented
-- [x] styling is done using Sass by using variables for the nav color, background and user messages and is imported using the index.js file
-- [x] bootstrap is imported using the index.js file
-- [x] nav bar menu items are done using SPA: by clicking on Search the title disappears, and the search bar is visible, and if you click on Add, the search bar is not visible anymore and the user can see the add form
-- [x] the search and add endpoints were previously implemented in the Spring Boot's backend of the main project
-- [x] they are implemented in the Client project using a fetch call
-  - if there are no results and error message appears, otherwise there is the search result table
-  - if the added form is not completed accordingly, the page remains the same; otherwise the user gets a message confirming that the object has been added succesfully
-- [x] CSRF is disabled only for "api/albums"
-- [x] CORS is enabled and corresponds to the Client application
-
-<h4>Week 3</h4>
-
-- [x] frontend project is embedded using npm and webpack and by following the 13-step project
-- [x] styling is done using Sass by using color variables and is imported using a site.js file in the fragment header to import it all over the html pages easier
-- [x] csrf function used in the .js files is written into a module.js file and imported into the rest of the .js files
-- [x] ESLint's suggestions are implemented in the .js files
-- [x] bootstrap icons are imported using the side.js file
-- [x] client-side validation is done using Joi npm package
-
-<h4>Week 4 - Multithreading</h4>
-
-- [x] new gradle project using String Data JPA and PostgreSQL Driver
-- [x] new docker container created using the Docker and README files 
-- [x] application.properties updated with DB info and the number of records inserted into the Artist table (10000)
-  - to seed the DB, the ddl is first set to create and then for searching and removing it's set to validate
-- [x] @Entity Artists is retrieved from the main project and has a JPA repository
-- [x] can switch between the seeders and searchers using @Qualifiers in the main app (interface implemented)
-- [x] seeding is done using faker
-  - id is implemented using the integer 'i'
-  - the name is done using the name() method from Faker
-  - the gender is binary and picked by the Faker
-  - the year is random and is chosen between 1900 and 2023
-  - time is recorded in the main app using StopWatch
-- [x] multithreading has a separate Worker class that seeds that DB using random instances between 2 id numbers
-- [x] the actual seeding is done using the multithreading class in a private class that takes CompletableFuture<Void>
-- [x] the seeding is done using N-threads 
-- [x] the single threaded seeder finds the records that start with the letter M and that debuted between 1940 and 2000 by getting them one by one using their id
-- [x] multithreading has a separate worker class that finds the records between 2 numbers (same logic as the seeder)
-- [x] the first 5 records are printed in the main app
-- [x] the remover class removes any record that matches the predicate from List<Artist>
-- [x] the actual removing is done in a separate class where 3 predicates are initialized and used by Workers
-- [x] 3 threads are started
-- [x] timing is done in the Multithreading project README
-
 <h4>Week 5 - Main project docker and CSV</h4>
 
 - [x] commands to create a container for the main project's database are included in the README
