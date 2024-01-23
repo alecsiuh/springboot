@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Artist')"></thymeleaf>
+    <script src="/js/bundle-delete_artist.js" defer type="module"></script>
+    <script src="/js/bundle-update_artist.js" defer></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('artist')"></header>
+<main class="vh-100 m-4">
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+            <th scope="col">Gender</th>
+            <th scope="col">Debut year</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+        </tr>
+        <tbody>
+        <tr th:attr="artist-id=${artist.id}" th:id="${artist.id}">
+            <th th:text="${artist.id}"></th>
+            <td sec:authorize="hasRole('ROLE_USER')" th:text="${artist.name}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <input type="text" th:value="${artist.name}" class="form-control">
+            </td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')" class="artist-name">
+                <button type="button" class="btn btn-primary">Save</button>
+            </td>
+            <td th:text="${artist.gender}"></td>
+            <td th:text="${artist.debutYear}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <button type="button" class="btn btn-danger text-light delete-artist">Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<footer th:include="fragments/includes :: footer('artist')"></footer>
+</body>
+</html>

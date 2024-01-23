@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Your music library')"></thymeleaf>
+    <script src="/js/bundle-add_song.js" defer type="module"></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('addSong')"></header>
+
+<main class="vh-100 w-100">
+    <section class="m-4 d-flex w-75 flex-column align-items-center">
+        <h1>Add song</h1>
+        <form id="addSongForm">
+            <div class="mb-3">
+                <label for="songName" class="form-label">Song name</label>
+                <input type="text" class="form-control" id="songName" required>
+                <div class="invalid-feedback">
+                    Please enter a name.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="duration" class="form-label">Duration</label>
+                <input type="number" class="form-control" id="duration">
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" class="form-control" id="genre">
+            </div>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</main>
+
+<footer th:include="fragments/includes :: footer('addSong')"></footer>
+</body>
+</html>

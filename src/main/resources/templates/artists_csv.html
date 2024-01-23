@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Add csv file')"></thymeleaf>
+</head>
+<body>
+<header th:include="fragments/includes :: header('artists_csv')"></header>
+
+<main class="container vh-100 m-4">
+    <h1>Artist CSV Upload</h1>
+    <form th:action="@{/artists_csv}" th:method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="artists_csv" class="form-label">
+                Select a file to upload</label>
+            <input class="form-control"
+                   type="file"
+                   name="artists_csv"
+                   id="artists_csv"/>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">
+                Upload
+            </button>
+        </div>
+    </form>
+
+    <div th:if="${inProgress}" class="alert alert-success d-flex align-items-center alert-dismissible fade show"
+         role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+            <use xlink:href="#check-circle-fill"/>
+        </svg>
+        <strong>In progress!</strong> Your CSV is being processed.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</main>
+
+<footer th:include="fragments/includes :: footer('artists_csv')"></footer>
+</body>
+</html>

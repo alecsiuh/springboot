@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Artists')"></thymeleaf>
+    <script src="/js/bundle-search_artist.js" defer type="module"></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('artist')"></header>
+
+<main class="vh-100 m-4" sec:authorize="hasRole('ROLE_ADMIN')">
+    <h1>Artists</h1>
+    <table class="table">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th scope="col">Gender</th>
+            <th scope="col">Debut year</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="artist: ${allArtists}" >
+            <td th:text="${artist.id}" class="pt-3"></td>
+            <td th:text="${artist.name}" class="pt-3"></td>
+            <td class="pt-3"><a th:href="@{/artists/artist/{artist}(artist=${artist.getId()})}"><i
+                    class="bi bi-pencil"></i></a></td>
+            <td th:text="${artist.gender}" class="pt-3"></td>
+            <td th:text="${artist.debutYear}" class="pt-3"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<main class="vh-100 m-4" sec:authorize="hasRole('USER')">
+    <h1>Artists</h1>
+    <div class="mb-3">
+        <input id="searchValue" class="form-control">
+    </div>
+
+    <table class="table" id="searchResults" style="visibility: hidden">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Debut year</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <table class="table" id="table">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Debut year</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="artist: ${allArtists}" th:id="'artist_' + ${artist.id}">
+            <td><a th:text="${artist.name}" th:href="@{/artists/artist/{artist}(artist=${artist.getId()})}"></a></td>
+            <td th:text="${artist.gender}" class="pt-3"></td>
+            <td th:text="${artist.debutYear}" class="pt-3"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:include="fragments/includes :: footer('artists')"></footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Songs')"></thymeleaf>
+    <script src="/js/bundle-search_songs.js" defer type="module"></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('songs')"></header>
+
+<main class="vh-100 m-4" sec:authorize="hasRole('ROLE_ADMIN')">
+    <h1>Songs</h1>
+    <table class="table">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Song name</th>
+            <th scope="col"></th>
+            <th scope="col">Duration</th>
+            <th scope="col">Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="song: ${allSongs}" th:id="'song_' + ${song.id}">
+            <td th:text="${song.id}" class="pt-3"></td>
+            <td th:text="${song.songName}" class="pt-3"></td>
+            <td class="pt-3"><a th:href="@{/songs/song/{song}(song=${song.getId()})}"><i
+                    class="bi bi-pencil"></i></a></td>
+            <td th:text="${song.duration}" class="pt-3"></td>
+            <td th:text="${song.genre}" class="pt-3"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<main class="vh-100 m-4" sec:authorize="hasRole('USER')">
+    <h1>Songs</h1>
+    <div class="mb-3">
+        <input id="searchValue" class="form-control">
+    </div>
+
+    <table class="table" id="searchResults" style="visibility: hidden">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <table class="table" id="table">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="song: ${allSongs}" th:id="'song_' + ${song.id}">
+            <td><a th:text="${song.songName}" th:href="@{/songs/song/{song}(song=${song.getId()})}"></a></td>
+            <td th:text="${song.duration}" class="pt-3"></td>
+            <td th:text="${song.genre}" class="pt-3"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

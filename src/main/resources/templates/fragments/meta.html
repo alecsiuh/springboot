@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <thymeleaf th:fragment="meta_script_link(title)" th:remove="tag">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link rel="stylesheet" href="/css/bundle-site.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  </thymeleaf>
+</head>
+<body>
+
+</body>
+</html>

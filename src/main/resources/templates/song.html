@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Song')"></thymeleaf>
+    <script src="/js/bundle-delete_song.js" defer type="module"></script>
+    <script src="/js/bundle-update_song.js" defer type="module"></script>
+
+</head>
+<body>
+<header th:include="fragments/includes :: header('song')"></header>
+
+<main class="vh-100 m-4">
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Song name</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+            <th scope="col">Duration</th>
+            <th scope="col">Genre</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+        </tr>
+        <tbody>
+        <tr th:attr="song-id=${song.id}">
+            <th th:text="${song.id}"></th>
+            <td sec:authorize="hasRole('ROLE_USER')" th:text="${song.songName}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <input type="text" th:value="${song.songName}" class="form-control">
+            </td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <button type="button" class="btn btn-primary edit-song">Save</button>
+            </td>
+            <td th:text="${song.duration}"></td>
+            <td th:text="${song.genre}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <button type="button" class="btn btn-danger text-light delete-song">Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:include="fragments/includes :: footer('song')" ></footer>
+</body>
+</html>

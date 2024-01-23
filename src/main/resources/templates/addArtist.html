@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Add artist')"></thymeleaf>
+    <script src="/js/bundle-add_artist.js" defer type="module"></script>
+</head>
+<body>
+
+<header th:include="fragments/includes :: header('addArtist')"></header>
+
+<main class="vh-100 w-100">
+    <section class="m-4 d-flex w-75 flex-column align-items-center">
+        <h1>Add artist</h1>
+        <form id="addArtistForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">
+                    Please enter a name.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control" id="gender" required>
+                <div class="invalid-feedback">
+                    Please enter a gender.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="debutYear" class="form-label">Debut year</label>
+                <input type="number" class="form-control" id="debutYear">
+            </div>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</main>
+
+<footer th:include="fragments/includes :: footer('addArtist')"></footer>
+</body>
+</html>

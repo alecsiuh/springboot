@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Create account')"></thymeleaf>
+    <script src="/js/bundle-add_user.js" defer></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('register')"></header>
+
+<main class="h-100">
+    <h1>Sign up</h1>
+    <form id="addUserForm">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" required>
+            <div class="invalid-feedback">
+                Please enter a username.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+            <div class="invalid-feedback">
+                Please enter an email.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password">
+            <div class="invalid-feedback">
+                Please enter a password.
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+<footer th:include="fragments/includes :: footer('register')"></footer>
+</body>
+</html>

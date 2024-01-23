@@ -1,0 +1,39 @@
+// @no-cookie-jar
+GET http://localhost:8080/artists/artist/2 HTTP/1.1
+Cookie: JSESSIONID=611A94B21CB256008ECFD9A3097374DC
+X-CSRF-TOKEN:	06c2b6c2-e8ea-4efe-b287-23199b4a10cf
+###
+
+GET http://localhost:8080/artists HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Cookie: JSESSIONID=088C3626A076E336C58A66A89240915D
+X-CSRF-TOKEN: 06c2b6c2-e8ea-4efe-b287-23199b4a10cf
+
+{
+  "name": "The Strokes",
+  "gender": "male group",
+  "debutYear": 1998
+}
+
+###
+GET http://localhost:8080/addArtists HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Cookie: JSESSIONID=78E3F4B5182B550C5594205820DAD194
+X-CSRF-TOKEN: 06c2b6c2-e8ea-4efe-b287-23199b4a10cf
+
+###
+GET http://localhost:8080/artists/artist/6 HTTP/1.1
+Accept: application/json
+
+###
+GET http://localhost:8080/artists/artis/2 HTTP/1.1
+Accept: application/json
+#get artist with wrong path
+
+###
+GET http://localhost:8080/removeAlbum HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+

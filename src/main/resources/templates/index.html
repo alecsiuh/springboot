@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Your music library')"></thymeleaf>
+</head>
+<body>
+<header th:include="fragments/includes :: header(page='index')"></header>
+
+<main class="h-100">
+    <div class="vh-100">
+        <div class="bg-image"
+             style="background-image: url('https://media.pitchfork.com/photos/5f5a4de8f5e6f1d3e7d3d6ce/16:9/w_1696,h_954,c_limit/Vinyl%20records.png');
+            height: 50vh">
+        </div>
+        <h1 class="d-flex justify-content-center">Welcome to your music library!</h1>
+    </div>
+</main>
+
+
+<footer th:include="fragments/includes :: footer(page='index')"></footer>
+</body>
+</html>

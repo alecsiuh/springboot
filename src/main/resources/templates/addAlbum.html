@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <thymeleaf th:replace="fragments/meta :: meta_script_link('Add album')"></thymeleaf>
+    <script src="/js/bundle-add_album.js" defer type="module"></script>
+</head>
+<body>
+<header th:include="fragments/includes :: header('addAlbum')"></header>
+
+<main class="vh-100 w-100">
+    <section class="m-4 d-flex w-75 flex-column align-items-center">
+        <h1>Add album</h1>
+        <form id="addAlbumForm" class="needs-validation">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" required>
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="amountOfSongs" class="form-label">Amount of songs</label>
+                <input type="number" class="form-control" id="amountOfSongs">
+            </div>
+            <div class="mb-3">
+                <label for="releaseDate" class="form-label">Release date</label>
+                <input type="date" class="form-control" id="releaseDate">
+            </div>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</main>
+<footer th:include="fragments/includes :: footer('addAlbum')"></footer>
+</body>
+</html>
